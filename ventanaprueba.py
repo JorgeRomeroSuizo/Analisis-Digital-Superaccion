@@ -8,7 +8,6 @@ import time
 
 #conexion = sqlite3.connect("prueba.db")
 #cursor = conexion.cursor()
-#cursor.execute("CREATE TABLE datosenbruto(tiempodeapertura , nombre, tiempodeuso)")
 
 
 activo=False
@@ -22,11 +21,9 @@ def monitor():
             tiempoapertura = time.ctime()
             global texto
             global tiempoinicio
-            #global cursor
-
             conexion = sqlite3.connect("prueba.db")
             cursor = conexion.cursor()
-         #   cursor.execute("CREATE TABLE datosenbruto(tiempodeapertura , nombre, tiempodeuso)")
+            cursor.execute("CREATE TABLE IF NOT EXISTS datosenbruto(tiempodeapertura , nombre, tiempodeuso)")
             ventanaactiva=pwc.getActiveWindowTitle()
             time.sleep(2)
             ventanacomparacion=pwc.getActiveWindowTitle()
@@ -35,7 +32,6 @@ def monitor():
                 filaainsertar=(tiempoapertura, ventanaactiva,tiempodeuso)
                 cursor.execute("INSERT INTO datosenbruto VALUES (?, ?, ?)", filaainsertar)
                 conexion.commit()
-                #texto = texto + f"\n {ventanaactiva} tiempo de uso: {tiempodeuso} segundos"
                 tiempoinicio=time.time()
                 tiempoapertura = time.ctime()
                 conexion.close()
