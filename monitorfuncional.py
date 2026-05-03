@@ -5,7 +5,7 @@ import sqlite3
 import pywinctl as pwc
 import threading as th
 import time
-from datetime import *
+#from datetime import *
 #conexion = sqlite3.connect("prueba.db")
 #cursor = conexion.cursor()
 
