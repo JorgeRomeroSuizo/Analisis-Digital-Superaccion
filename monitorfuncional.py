@@ -1,65 +1,58 @@
 from customtkinter import *
-import psutil as ps
-import os
+#import psutil as ps
+#import os
 import sqlite3
 import pywinctl as pwc
-import threading as th
 import time
 #from datetime import *
 #conexion = sqlite3.connect("prueba.db")
 #cursor = conexion.cursor()
-
-
-activo=False
-tiempoinicio=time.time()
-tiempoapertura = time.ctime()
-
-
-def monitor():
-    global activo
-    while True:
-        while activo:
-            global tiempoinicio
-            global tiempoapertura
-            conexion = sqlite3.connect("prueba.db")
-            cursor = conexion.cursor()
-            cursor.execute("CREATE TABLE IF NOT EXISTS datosenbruto(tiempodeapertura , nombre, tiempodeuso)")
-            ventanaactiva=pwc.getActiveWindowTitle()
-            time.sleep(2)
-            ventanacomparacion=pwc.getActiveWindowTitle()
-            if ventanaactiva!=ventanacomparacion:
-                tiempodeuso=round(time.time()-tiempoinicio, 3)
-                filaainsertar=(tiempoapertura, ventanaactiva,tiempodeuso)
-                cursor.execute("INSERT INTO datosenbruto VALUES (?, ?, ?)", filaainsertar)
-                conexion.commit()
-                tiempoinicio=time.time()
-                tiempoapertura = time.ctime()
-                conexion.close()
-
-thread = th.Thread(target=monitor, daemon=True)
-thread.start()
-
 class VentanaPrueba(CTk):
     def __init__(self):
         super().__init__()
-        self.title("Ventana Prueba")
+        self.conexion = sqlite3.connect("prueba.db")
+        self.cursor = self.conexion.cursor()
+        self.title("Pruebas superaccion")
         self.geometry("600x600")
-        CTkButton(self, text="Iniciar Monitoreo", command=self.activar).pack()
-        CTkButton(self, text="Pausar Monitoreo", command=self.desactivar).pack()
-        self.estaactivo=CTkLabel(self, text="Monitor: Desactivado")
+        self.activo = False
+        self.tiempoinicio = time.time()
+        self.tiempoapertura = time.ctime()
+        tabs=CTkTabview(self)
+        tabs.pack(fill="both", expand=True)
+        tabs.add("Estado monitor")
+        tabs.add("Dibujo tabla")
+        CTkButton(tabs.tab("Estado monitor"), text="Iniciar Monitoreo", command=self.activar).pack()
+        CTkButton(tabs.tab("Estado monitor"), text="Pausar Monitoreo", command=self.desactivar).pack()
+        self.estaactivo=CTkLabel(tabs.tab("Estado monitor"), text="Monitor: Desactivado")
         self.estaactivo.pack()
+        self.monitor()
+
     def activar(self):
-        global activo
-        global tiempoinicio
-        global tiempoapertura
-        tiempoinicio = time.time()
-        tiempoapertura = time.ctime()
-        activo=True
+        self.tiempoinicio = time.time()
+        self.tiempoapertura = time.ctime()
+        self.activo=True
         #thread.start()
         self.estaactivo.configure(text="Monitor: Activado")
     def desactivar(self):
-        global activo
-        activo=False
+        self.activo=False
         self.estaactivo.configure(text="Monitor: Desactivado")
+    def monitor(self):
+            if self.activo:
+                self.ventanaactiva = pwc.getActiveWindowTitle()
+                self.after(2000, self.prueba)
+            else:
+                self.after(100, self.monitor)
+    def prueba(self):
+        ventanacomparacion = pwc.getActiveWindowTitle()
+        if self.ventanaactiva != ventanacomparacion:
+            self.cursor.execute("CREATE TABLE IF NOT EXISTS datosenbruto(tiempodeapertura , nombre, tiempodeuso)")
+            tiempodeuso = round(time.time() - self.tiempoinicio, 3)
+            filaainsertar = (self.tiempoapertura, self.ventanaactiva, tiempodeuso)
+            self.cursor.execute("INSERT INTO datosenbruto VALUES (?, ?, ?)", filaainsertar)
+            self.conexion.commit()
+            self.tiempoinicio = time.time()
+            self.tiempoapertura = time.ctime()
+            #self.conexion.close()
+        self.after(0, self.monitor)
 
 VentanaPrueba().mainloop()
