@@ -15,7 +15,7 @@ Podra ver que esta monitoreando por el cambio de texto a "Monitor: Activado"
 En la pestaña de "Dibujo Tabla", podran ver toda su actividad registrada, y varias funciones para organizarla.
 <img width="1912" height="1037" alt="image" src="https://github.com/user-attachments/assets/71cbef6f-0897-4c31-aa25-9dc40f87e2ab" />
 
-Cuando sientan que han acumulado una cantidad suficiente de datos (un dia aproximadamente ya dara información util) pueden ir a la tercera pestaña y darle al botón analizar.
+Cuando sientan que han acumulado una cantidad suficiente de datos (tarda alrededor de un día en dar información util), pueden ir a la tercera pestaña y darle al botón analizar.
 <img width="1902" height="1038" alt="image" src="https://github.com/user-attachments/assets/87f12d2b-ef10-46c3-b3c5-0ad909ddcb27" />
 
 **Guia de instalación**
