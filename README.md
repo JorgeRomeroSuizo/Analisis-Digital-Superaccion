@@ -1,3 +1,20 @@
-Projecto Superacción 2026 Grupo 1.
+<img width="1912" height="1037" alt="image" src="https://github.com/user-attachments/assets/f59f6885-d736-40a4-97df-5b1f80ed4754" />**Proyecto Superacción 2026 Grupo 1.**
 
 Aplicación para análisis del uso de dispositivos digitales con el objetivo de ayudar al estudiante a combatir la procrastinación.
+
+Este proyecto se encarga de recopilar localmente la actividad del usuario (actualmente en computadoras). Analiza esta información también localmente e informa al usuario si está procrastinando, por qué está procrastinando y consejos sobre cómo enfrentar la procrastinación segun su caso especial.
+
+**Guia de uso**
+
+Para iniciar el monitoreo presione el botón correspondiente.
+<img width="1906" height="1031" alt="image" src="https://github.com/user-attachments/assets/ac8b9038-be1c-453a-8026-89726e62fc87" />
+
+Podra ver que esta monitoreando por el cambio de texto a "Monitor: Activado"
+<img width="268" height="98" alt="image" src="https://github.com/user-attachments/assets/d0e32571-94ab-4dac-b83f-18909447bc15" />
+
+En la pestaña de "Dibujo Tabla", podran ver toda su actividad registrada, y varias funciones para organizarla.
+<img width="1912" height="1037" alt="image" src="https://github.com/user-attachments/assets/71cbef6f-0897-4c31-aa25-9dc40f87e2ab" />
+
+Cuando sientan que han acumulado una cantidad suficiente de datos (Un dia aproximadamente ya dara información util) pueden ir a la tercera pestaña y darle al botón analizar.
+<img width="1902" height="1038" alt="image" src="https://github.com/user-attachments/assets/87f12d2b-ef10-46c3-b3c5-0ad909ddcb27" />
+
