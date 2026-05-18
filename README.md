@@ -1,4 +1,4 @@
-<img width="1912" height="1037" alt="image" src="https://github.com/user-attachments/assets/f59f6885-d736-40a4-97df-5b1f80ed4754" />**Proyecto Superacción 2026 Grupo 1.**
+**Proyecto Superacción 2026 Grupo 1.**
 
 Aplicación para análisis del uso de dispositivos digitales con el objetivo de ayudar al estudiante a combatir la procrastinación.
 
