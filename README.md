@@ -20,6 +20,7 @@ Cuando sientan que han acumulado una cantidad suficiente de datos (tarda alreded
 
 **Guia de instalación**
 
-Descargue el .exe provisto y ejecutelo en la carpeta donde desee que se guarde la base de datos con sus datos.
+Descargue el .exe provisto en releases y ejecutelo en la carpeta donde desee que se guarde la base de datos con sus datos.
+https://github.com/JorgeRomeroSuizo/Analisis-Digital-Superaccion/releases/tag/Versi%C3%B3n-Oficial
 
 *Si se presenta un mensaje similar a "Este archivo no es seguro", puede darle a mas información y continuar con la ejecución.
